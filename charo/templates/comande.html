@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  /* Style pour centrer la carte */
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    backdrop-filter: blur(5px); /* Applique un flou à l'arrière-plan */
+  }
+
+  .card {
+    width: 300px; /* Ajustez la largeur de la card selon vos besoins */
+  }
+</style>
+
+<div class="card-container">
+
+
+  <div class="card">
+
+    
+    <div class="card-body">
+    
+      <h5 class="card-title text-center">Formulaire de commande pour le vehicule "{{ article.nom }}"</h5>
+
+      <form class="row g-3" method="post" novalidate>
+        {% csrf_token %}
+          
+        <div class="col-12 text-center">
+          <label for="id_nom_client" class="form-label">Nom</label><br>
+          {% if form.nom.errors %}
+            {% for error in form.nom.errors %}
+            <div class="">
+              <small class="text-danger">{{ error }}</small>
+          </div>
+          {% endfor %}
+          {% endif %}
+          {{ form.nom }}
+        </div>
+        <div class="col-12 text-center">
+            <label for="id_nom_client" class="form-label">Prenom </label><br>
+            {% if form.prenom.errors %}
+              {% for error in form.prenom.errors %}
+              <div class="">
+                <small class="text-danger">{{ error }}</small>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {{ form.prenom }}
+          </div>
+
+        <div class="col-12 text-center">
+          <label for="id_numero_client" class="form-label">Numéro de téléphone</label><br>
+          {% if form.numero.errors %}
+            {% for error in form.numero.errors %}
+            <div class="">
+              <small class="text-danger">{{ error }}</small>
+          </div>
+          {% endfor %}
+          {% endif %}
+
+          {{ form.numero }}
+        </div>
+        <div class="col-12 text-center">
+            <label for="id_numero_client" class="form-label">Email</label><br>
+            {% if form.email.errors %}
+              {% for error in form.email.errors %}
+              <div class="">
+                <small class="text-danger">{{ error }}</small>
+            </div>
+            {% endfor %}
+            {% endif %}
+  
+            {{ form.email }}
+          </div>
+
+        <div class="col-12 text-center">
+          <label for="id_quantite" aria-placeholder="07/06/24" clss="form-label">date debut</label><br>
+          {% if form.date_debut.errors %}
+            {% for error in form.date_debut.errors %}
+            <div class="">
+              <small class="text-danger">{{ error }}</small>
+          </div>
+          {% endfor %}
+          {% endif %}
+          {{ form.date_debut }}
+        </div>
+        <div class="col-12 text-center">
+          <label for="id_taille" class="form-label">Nombre de jours</label><br>
+          {% if form.nbre_jours.errors %}
+            {% for error in form.nbre_jours.errors %}
+            <div class="">
+              <small class="text-danger">{{ error }}</small>
+          </div>
+          {% endfor %}
+          {% endif %}
+          {{ form.nbre_jours }}
+      </div>
+
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">Valider</button>
+          
+
+          <button type="reset" class="btn btn-secondary">Réinitialiser</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

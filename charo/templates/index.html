@@ -1,0 +1,279 @@
+
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="hero-wrap ftco-degree-bg" style="background-image: url('{% static 'images/bg_1.jpg' %}');" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
+      <div class="col-lg-8 ftco-animate">
+        <div class="text w-100 text-center mb-md-5 pb-md-5">
+          <h1 class="mb-4">Moyen Rapide &amp;   Facile de Louer une Voiture</h1>
+          <p style="font-size: 18px;">Découvrez la Côte d'Ivoire avec notre location de voitures - clé d'aventures inoubliables et pratiques.</p>
+          <a href="Range_Rover.mp4" class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
+            <div class="icon d-flex align-items-center justify-content-center">
+              <span class="ion-ios-play"></span>
+            </div>
+            <div class="heading-title ml-5">
+              <span>Decouvrez la can en Cote Ivoire autrement.</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="ftco-section ftco-no-pt bg-light">
+  <div class="container">
+      <div class="row no-gutters">
+          <div class="col-md-12 featured-top">
+              <div class="row no-gutters">
+                  <div class="col-md-4 d-flex align-items-center">
+                      <form action="#" class="request-form ftco-animate bg-primary">
+                          <h2>Nous offrons des véhicules confortables, propres avec tous les documents au complet avec un système de partenariat transparent, fiable et sécurisé.</h2>
+                          <div class="form-group">
+                              <label for="" class="label">Pick-up location</label>
+                              <input type="text" class="form-control" placeholder="City, Airport, Station, etc">
+                          </div>
+                          <!-- ... (other form fields) ... -->
+                          <div class="form-group">
+                              <input type="submit" value="Louer une voiture maintenant" class="btn btn-secondary py-3 px-4">
+                          </div>
+                      </form>
+                  </div>
+                  <div class="col-md-8 d-flex align-items-center">
+                      <div class="services-wrap rounded-right w-100">
+                          <h3 class="heading-section mb-4">Une meilleure façon de louer votre voiture parfaite</h3>
+                          <div class="row d-flex mb-4">
+                              <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                  <div class="services w-100 text-center">
+                                      <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
+                                      <div class="text w-100">
+                                          <h3 class="heading mb-2">Choisissez votre lieu de prise en charge</h3>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                  <div class="services w-100 text-center">
+                                      <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
+                                      <div class="text w-100">
+                                          <h3 class="heading mb-2">Sélectionnez la meilleure offre</h3>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                  <div class="services w-100 text-center">
+                                      <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
+                                      <div class="text w-100">
+                                          <h3 class="heading mb-2">Réservez votre voiture de location</h3>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <p><a href="{% url 'voiture_dispo' %}" class="btn btn-primary py-3 px-4">Réservez votre voiture parfaite</a></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+<section class="ftco-section ftco-no-pt bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+        <span class="subheading">Ce que nous offrons</span>
+        <h2 class="mb-2">Véhicules en Vedette</h2>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="carousel-car owl-carousel">
+          {% for article in liste_articles %}
+          <div class="item">
+            <div class="car-wrap rounded ftco-animate">
+              <div class="img rounded d-flex align-items-end" style="background-image: url('{{ article.image1.url }}');">
+              </div>
+              <div class="text">
+                <h2 class="mb-0"><a href="#">{{ article.nom }}</a></h2>
+                <div class="d-flex mb-3">
+                  <span class="cat">{{ article.description }}</span>
+                  <p class="price ml-auto"> {{ article.prix }} FCFA <span>/jour</span></p>
+                </div>
+                <p class="d-flex mb-0 d-block"><a href="{% url 'commande' article.id %}" class="btn btn-primary py-2 mr-1">Reservez</a> <a href="{% url 'detail' article.id %}" class="btn btn-secondary py-2 ml-1">Details</a></p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ftco-section ftco-about">
+  <div class="container">
+    <div class="row no-gutters">
+      <div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url('{% static 'images/about.jpg' %}');">
+      </div>
+      <div class="col-md-6 wrap-about ftco-animate">
+        <div class="heading-section heading-section-white pl-md-5">
+          <span class="subheading">A prpos</span>
+          <h2 class="mb-4">La can c'est chez nous</h2>
+
+          <p>Explorez la CAN avec Carbook - votre partenaire idéal pour une expérience de location de voiture inoubliable.</p>
+            <p>Parcourez le pays en toute liberté, découvrez des trésors cachés et vivez des moments uniques pendant la CAN.</p>
+            <p>Notre flotte variée et notre service fiable vous assurent un voyage sans soucis. Réservez maintenant et commencez votre aventure!</p>
+            <p><a href="#" class="btn btn-primary py-3 px-4">Rechercher un véhicule</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="ftco-section ftco-intro" style="background-image: url('{% static 'images/bg_3.jpg' %}');">
+  <div class="overlay"></div>
+  <div class="container">
+      <div class="row justify-content-end">
+          <div class="col-md-6 heading-section heading-section-white ftco-animate">
+              <h2 class="mb-3">Vous souhaitez gagner avec nous? Alors ne soyez pas en retard.</h2>
+              <p>En mettant votre voiture sur notre site, vous bénéficiez d'une visibilité accrue et de la possibilité de gagner de l'argent de manière simple et efficace.</p>
+              <p>Rejoignez notre communauté de conducteurs dès maintenant et profitez des avantages de travailler avec nous. Facile, flexible et rentable!</p>
+              <a href="#" class="btn btn-primary btn-lg">Devenir Prestataire</a>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+                <!-- Le lien vers Colorlib ne peut pas être supprimé. Le modèle est sous licence CC BY 3.0. 
+
+<section class="ftco-section testimony-section bg-light">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7 text-center heading-section ftco-animate">
+        <span class="subheading">Testimonial</span>
+        <h2 class="mb-3">Happy Clients</h2>
+      </div>
+    </div>
+    <div class="row ftco-animate">
+      <div class="col-md-12">
+        <div class="carousel-testimony owl-carousel ftco-owl">
+          <div class="item">
+            <div class="testimony-wrap rounded text-center py-4 pb-5">
+              <div class="user-img mb-2" style="background-image: url(images/person_1.jpg)">
+              </div>
+              <div class="text pt-4">
+                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <p class="name">Roger Scott</p>
+                <span class="position">Marketing Manager</span>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="testimony-wrap rounded text-center py-4 pb-5">
+              <div class="user-img mb-2" style="background-image: url(images/person_2.jpg)">
+              </div>
+              <div class="text pt-4">
+                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <p class="name">Roger Scott</p>
+                <span class="position">Interface Designer</span>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="testimony-wrap rounded text-center py-4 pb-5">
+              <div class="user-img mb-2" style="background-image: url(images/person_3.jpg)">
+              </div>
+              <div class="text pt-4">
+                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <p class="name">Roger Scott</p>
+                <span class="position">UI Designer</span>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="testimony-wrap rounded text-center py-4 pb-5">
+              <div class="user-img mb-2" style="background-image: url(images/person_1.jpg)">
+              </div>
+              <div class="text pt-4">
+                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <p class="name">Roger Scott</p>
+                <span class="position">Web Developer</span>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="testimony-wrap rounded text-center py-4 pb-5">
+              <div class="user-img mb-2" style="background-image: url(images/person_1.jpg)">
+              </div>
+              <div class="text pt-4">
+                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <p class="name">Roger Scott</p>
+                <span class="position">System Analyst</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>-->
+
+
+
+<section class="ftco-counter ftco-section img bg-light" id="section-counter">
+  <div class="overlay"></div>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+              <div class="block-18">
+                  <div class="text text-border d-flex align-items-center">
+                      <strong class="number" data-number="3">0</strong>
+                      <span>Années <br>d'expérience</span>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+              <div class="block-18">
+                  <div class="text text-border d-flex align-items-center">
+                      <strong class="number" data-number="80">0</strong>
+                      <span>Total <br>Voitures</span>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+              <div class="block-18">
+                  <div class="text text-border d-flex align-items-center">
+                      <strong class="number" data-number="100">0</strong>
+                      <span>Clients <br>Satisfaits</span>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+              <div class="block-18">
+                  <div class="text d-flex align-items-center">
+                      <strong class="number" data-number="1">0</strong>
+                      <span>Total <br>Agences</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+{% endblock %}
+ 
+
+

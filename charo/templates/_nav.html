@@ -1,0 +1,23 @@
+
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'home' %}">allumons la Can<span>Voiture-can.com</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a href="{% url 'home' %}" class="nav-link">Acceuil</a></li>
+          <li class="nav-item"><a href="{% url 'voiture_dispo' %}" class="nav-link">Voitures Disponibles</a></li>
+          <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+          <form class="form-inline my-1" action={% url 'search' %} >
+            <div class="md-form form-sm my-0">
+              
+              <input class="form-control form-control-sm mr-sm-2 mb-0" type="text" placeholder="Cherchez une voiture" aria-label="Search" name="article">
+            </div>
+          </form>
+        </ul>
+      </div>
+    </div>
+  </nav>
